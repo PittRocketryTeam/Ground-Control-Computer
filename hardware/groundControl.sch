@@ -10133,12 +10133,6 @@ NASA Student Launch
 <label x="223.52" y="152.4" size="1.778" layer="95" grouprefs="TEENSY_4.0"/>
 </segment>
 </net>
-<net name="N$11" class="0">
-<segment>
-<pinref part="U$3" gate="G$1" pin="13/(LED)/SCK/CRX1"/>
-<wire x1="203.2" y1="83.82" x2="226.06" y2="83.82" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-</segment>
-</net>
 </nets>
 </sheet>
 </sheets>
