@@ -163,6 +163,193 @@
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
+<library name="Teensy_3_and_LC_Series_Boards_v1.4">
+<packages>
+<package name="TEENSY_3.6_DIL">
+<pad name="GND" x="-7.62" y="27.94" drill="0.9652"/>
+<pad name="0" x="-7.62" y="25.4" drill="0.9652"/>
+<pad name="1" x="-7.62" y="22.86" drill="0.9652"/>
+<pad name="2" x="-7.62" y="20.32" drill="0.9652"/>
+<pad name="3" x="-7.62" y="17.78" drill="0.9652"/>
+<pad name="4" x="-7.62" y="15.24" drill="0.9652"/>
+<pad name="5" x="-7.62" y="12.7" drill="0.9652"/>
+<pad name="6" x="-7.62" y="10.16" drill="0.9652"/>
+<pad name="7" x="-7.62" y="7.62" drill="0.9652"/>
+<pad name="8" x="-7.62" y="5.08" drill="0.9652"/>
+<pad name="9" x="-7.62" y="2.54" drill="0.9652"/>
+<pad name="10" x="-7.62" y="0" drill="0.9652"/>
+<pad name="11" x="-7.62" y="-2.54" drill="0.9652"/>
+<pad name="12" x="-7.62" y="-5.08" drill="0.9652"/>
+<pad name="24" x="-7.62" y="-10.16" drill="0.9652"/>
+<pad name="25" x="-7.62" y="-12.7" drill="0.9652"/>
+<pad name="26" x="-7.62" y="-15.24" drill="0.9652"/>
+<pad name="27" x="-7.62" y="-17.78" drill="0.9652"/>
+<pad name="13" x="7.62" y="-5.08" drill="0.9652"/>
+<pad name="14/A0" x="7.62" y="-2.54" drill="0.9652"/>
+<pad name="15/A1" x="7.62" y="0" drill="0.9652"/>
+<pad name="16/A2" x="7.62" y="2.54" drill="0.9652"/>
+<pad name="17/A3" x="7.62" y="5.08" drill="0.9652"/>
+<pad name="18/A4" x="7.62" y="7.62" drill="0.9652"/>
+<pad name="19/A5" x="7.62" y="10.16" drill="0.9652"/>
+<pad name="20/A6" x="7.62" y="12.7" drill="0.9652"/>
+<pad name="21/A7" x="7.62" y="15.24" drill="0.9652"/>
+<pad name="22/A8" x="7.62" y="17.78" drill="0.9652"/>
+<pad name="23/A9" x="7.62" y="20.32" drill="0.9652"/>
+<pad name="3.3V" x="7.62" y="22.86" drill="0.9652"/>
+<pad name="AGND" x="7.62" y="25.4" drill="0.9652"/>
+<pad name="VIN" x="7.62" y="27.94" drill="0.9652"/>
+<wire x1="-8.89" y1="29.21" x2="8.89" y2="29.21" width="0.127" layer="51"/>
+<wire x1="8.89" y1="29.21" x2="8.89" y2="-31.75" width="0.127" layer="51"/>
+<wire x1="8.89" y1="-31.75" x2="-8.89" y2="-31.75" width="0.127" layer="51"/>
+<wire x1="-8.89" y1="-31.75" x2="-8.89" y2="29.21" width="0.127" layer="51"/>
+<wire x1="-3.81" y1="30.48" x2="3.81" y2="30.48" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="30.48" x2="3.81" y2="29.21" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="29.21" x2="8.89" y2="29.21" width="0.2032" layer="21"/>
+<wire x1="8.89" y1="29.21" x2="8.89" y2="-31.75" width="0.2032" layer="21"/>
+<wire x1="8.89" y1="-31.75" x2="-8.89" y2="-31.75" width="0.2032" layer="21"/>
+<wire x1="-8.89" y1="-31.75" x2="-8.89" y2="29.21" width="0.2032" layer="21"/>
+<wire x1="-8.89" y1="29.21" x2="-3.81" y2="29.21" width="0.2032" layer="21"/>
+<wire x1="-3.81" y1="29.21" x2="-3.81" y2="30.48" width="0.2032" layer="21"/>
+<text x="-3.175" y="31.115" size="1.27" layer="25" font="vector">&gt;NAME</text>
+<text x="1.27" y="-13.97" size="1.27" layer="27" font="vector" rot="R90">&gt;VALUE</text>
+<pad name="3.3V3" x="-7.62" y="-7.62" drill="0.9652"/>
+<pad name="38/A19" x="7.62" y="-17.78" drill="0.9652"/>
+<pad name="39/A20" x="7.62" y="-15.24" drill="0.9652"/>
+<pad name="A21" x="7.62" y="-12.7" drill="0.9652"/>
+<pad name="A22" x="7.62" y="-10.16" drill="0.9652"/>
+<pad name="GND1" x="7.62" y="-7.62" drill="0.9652"/>
+<pad name="28" x="-7.62" y="-20.32" drill="0.9652"/>
+<pad name="29" x="-7.62" y="-22.86" drill="0.9652"/>
+<pad name="30" x="-7.62" y="-25.4" drill="0.9652"/>
+<pad name="31/A12" x="-7.62" y="-27.94" drill="0.9652"/>
+<pad name="32/A13" x="-7.62" y="-30.48" drill="0.9652"/>
+<pad name="33/A14" x="7.62" y="-30.48" drill="0.9652"/>
+<pad name="37/A18" x="7.62" y="-20.32" drill="0.9652"/>
+<pad name="36/A17" x="7.62" y="-22.86" drill="0.9652"/>
+<pad name="35/A16" x="7.62" y="-25.4" drill="0.9652"/>
+<pad name="34/A15" x="7.62" y="-27.94" drill="0.9652"/>
+</package>
+</packages>
+<symbols>
+<symbol name="TEENSY_3.6_DIL">
+<wire x1="-22.86" y1="-53.34" x2="20.32" y2="-53.34" width="0.254" layer="94"/>
+<wire x1="20.32" y1="-53.34" x2="20.32" y2="55.88" width="0.254" layer="94"/>
+<wire x1="20.32" y1="55.88" x2="-22.86" y2="55.88" width="0.254" layer="94"/>
+<wire x1="-22.86" y1="55.88" x2="-22.86" y2="-53.34" width="0.254" layer="94"/>
+<pin name="12/MISO0" x="-27.94" y="20.32" visible="pin" length="middle"/>
+<pin name="11/MOSI0" x="-27.94" y="22.86" visible="pin" length="middle"/>
+<pin name="10/TX2/PWM" x="-27.94" y="25.4" visible="pin" length="middle"/>
+<pin name="9/RX2/PWM" x="-27.94" y="27.94" visible="pin" length="middle"/>
+<pin name="8/TX3/PWM" x="-27.94" y="30.48" visible="pin" length="middle"/>
+<pin name="7/RX3/PWM" x="-27.94" y="33.02" visible="pin" length="middle"/>
+<pin name="6/PWM" x="-27.94" y="35.56" visible="pin" length="middle"/>
+<pin name="5/PWM" x="-27.94" y="38.1" visible="pin" length="middle"/>
+<pin name="4/CAN0-RX/SDA2/PWM" x="-27.94" y="40.64" visible="pin" length="middle"/>
+<pin name="3/CAN0-TX/SCL2/PWM" x="-27.94" y="43.18" visible="pin" length="middle"/>
+<pin name="2/PWM" x="-27.94" y="45.72" visible="pin" length="middle"/>
+<pin name="1/TX1/MISO1/T" x="-27.94" y="48.26" visible="pin" length="middle"/>
+<pin name="0/RX1/MOSI1/T" x="-27.94" y="50.8" visible="pin" length="middle"/>
+<pin name="GND" x="25.4" y="43.18" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="VIN" x="25.4" y="50.8" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="AGND" x="25.4" y="7.62" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="3.3V" x="25.4" y="48.26" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="23/A9/T/PWM" x="-27.94" y="-7.62" visible="pin" length="middle"/>
+<pin name="22/A8/T/PWM" x="-27.94" y="-5.08" visible="pin" length="middle"/>
+<pin name="21/A7/PWM" x="-27.94" y="-2.54" visible="pin" length="middle"/>
+<pin name="20/A6/PWM" x="-27.94" y="0" visible="pin" length="middle"/>
+<pin name="19/A5/T/SCL0" x="-27.94" y="2.54" visible="pin" length="middle"/>
+<pin name="18/A4/T/SDA0" x="-27.94" y="5.08" visible="pin" length="middle"/>
+<pin name="17/A3/T/PWM" x="-27.94" y="7.62" visible="pin" length="middle"/>
+<pin name="16/A2/T/PWM" x="-27.94" y="10.16" visible="pin" length="middle"/>
+<pin name="15/A1/T" x="-27.94" y="12.7" visible="pin" length="middle"/>
+<pin name="14/A0/PWM" x="-27.94" y="15.24" visible="pin" length="middle"/>
+<pin name="13/SCK0/LED" x="-27.94" y="17.78" visible="pin" length="middle"/>
+<text x="-8.128" y="57.15" size="1.27" layer="95" font="vector" ratio="15">&gt;NAME</text>
+<text x="-5.334" y="-55.88" size="1.27" layer="96" font="vector" ratio="15">&gt;VALUE</text>
+<pin name="24" x="-27.94" y="-10.16" visible="pin" length="middle"/>
+<pin name="25" x="-27.94" y="-12.7" visible="pin" length="middle"/>
+<pin name="26" x="-27.94" y="-15.24" visible="pin" length="middle"/>
+<pin name="27" x="-27.94" y="-17.78" visible="pin" length="middle"/>
+<pin name="28" x="-27.94" y="-20.32" visible="pin" length="middle"/>
+<pin name="29/T/PWM" x="-27.94" y="-22.86" visible="pin" length="middle"/>
+<pin name="30/T/PWM" x="-27.94" y="-25.4" visible="pin" length="middle"/>
+<pin name="31/A12/RX4" x="-27.94" y="-27.94" visible="pin" length="middle"/>
+<pin name="32/A13/TX4" x="-27.94" y="-30.48" visible="pin" length="middle"/>
+<pin name="33/A14/TX5/CAN1-TX" x="-27.94" y="-33.02" visible="pin" length="middle"/>
+<pin name="A22/DAC1" x="25.4" y="2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="A21/DAC0" x="25.4" y="0" visible="pin" length="middle" rot="R180"/>
+<pin name="34/A15/RX5/CAN1-RX" x="-27.94" y="-35.56" visible="pin" length="middle"/>
+<pin name="35/A16/PWM" x="-27.94" y="-38.1" visible="pin" length="middle"/>
+<pin name="36/A17/PWM" x="-27.94" y="-40.64" visible="pin" length="middle"/>
+<pin name="37/A18/SCL1/PWM" x="-27.94" y="-43.18" visible="pin" length="middle"/>
+<pin name="38/A19/SDA1/PWM" x="-27.94" y="-45.72" visible="pin" length="middle"/>
+<pin name="39/A20" x="-27.94" y="-48.26" visible="pin" length="middle"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TEENSY_3.6_DIL">
+<description>Teensy 3.6 DIL Package</description>
+<gates>
+<gate name="G$1" symbol="TEENSY_3.6_DIL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TEENSY_3.6_DIL">
+<connects>
+<connect gate="G$1" pin="0/RX1/MOSI1/T" pad="0"/>
+<connect gate="G$1" pin="1/TX1/MISO1/T" pad="1"/>
+<connect gate="G$1" pin="10/TX2/PWM" pad="10"/>
+<connect gate="G$1" pin="11/MOSI0" pad="11"/>
+<connect gate="G$1" pin="12/MISO0" pad="12"/>
+<connect gate="G$1" pin="13/SCK0/LED" pad="13"/>
+<connect gate="G$1" pin="14/A0/PWM" pad="14/A0"/>
+<connect gate="G$1" pin="15/A1/T" pad="15/A1"/>
+<connect gate="G$1" pin="16/A2/T/PWM" pad="16/A2"/>
+<connect gate="G$1" pin="17/A3/T/PWM" pad="17/A3"/>
+<connect gate="G$1" pin="18/A4/T/SDA0" pad="18/A4"/>
+<connect gate="G$1" pin="19/A5/T/SCL0" pad="19/A5"/>
+<connect gate="G$1" pin="2/PWM" pad="2"/>
+<connect gate="G$1" pin="20/A6/PWM" pad="20/A6"/>
+<connect gate="G$1" pin="21/A7/PWM" pad="21/A7"/>
+<connect gate="G$1" pin="22/A8/T/PWM" pad="22/A8"/>
+<connect gate="G$1" pin="23/A9/T/PWM" pad="23/A9"/>
+<connect gate="G$1" pin="24" pad="24"/>
+<connect gate="G$1" pin="25" pad="25"/>
+<connect gate="G$1" pin="26" pad="26"/>
+<connect gate="G$1" pin="27" pad="27"/>
+<connect gate="G$1" pin="28" pad="28"/>
+<connect gate="G$1" pin="29/T/PWM" pad="29"/>
+<connect gate="G$1" pin="3.3V" pad="3.3V 3.3V3"/>
+<connect gate="G$1" pin="3/CAN0-TX/SCL2/PWM" pad="3"/>
+<connect gate="G$1" pin="30/T/PWM" pad="30"/>
+<connect gate="G$1" pin="31/A12/RX4" pad="31/A12"/>
+<connect gate="G$1" pin="32/A13/TX4" pad="32/A13"/>
+<connect gate="G$1" pin="33/A14/TX5/CAN1-TX" pad="33/A14"/>
+<connect gate="G$1" pin="34/A15/RX5/CAN1-RX" pad="34/A15"/>
+<connect gate="G$1" pin="35/A16/PWM" pad="35/A16"/>
+<connect gate="G$1" pin="36/A17/PWM" pad="36/A17"/>
+<connect gate="G$1" pin="37/A18/SCL1/PWM" pad="37/A18"/>
+<connect gate="G$1" pin="38/A19/SDA1/PWM" pad="38/A19"/>
+<connect gate="G$1" pin="39/A20" pad="39/A20"/>
+<connect gate="G$1" pin="4/CAN0-RX/SDA2/PWM" pad="4"/>
+<connect gate="G$1" pin="5/PWM" pad="5"/>
+<connect gate="G$1" pin="6/PWM" pad="6"/>
+<connect gate="G$1" pin="7/RX3/PWM" pad="7"/>
+<connect gate="G$1" pin="8/TX3/PWM" pad="8"/>
+<connect gate="G$1" pin="9/RX2/PWM" pad="9"/>
+<connect gate="G$1" pin="A21/DAC0" pad="A21"/>
+<connect gate="G$1" pin="A22/DAC1" pad="A22"/>
+<connect gate="G$1" pin="AGND" pad="AGND"/>
+<connect gate="G$1" pin="GND" pad="GND GND1"/>
+<connect gate="G$1" pin="VIN" pad="VIN"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 <library name="frames" urn="urn:adsk.eagle:library:229">
 <description>&lt;b&gt;Frames for Sheet and Layout&lt;/b&gt;</description>
 <packages>
@@ -9711,142 +9898,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="Teensy 4.0">
-<packages>
-<package name="TEENSY4.0">
-<pad name="GND1" x="-7.62" y="15.24" drill="0.8"/>
-<pad name="0" x="-7.62" y="12.7" drill="0.8"/>
-<pad name="1" x="-7.62" y="10.16" drill="0.8"/>
-<pad name="2" x="-7.62" y="7.62" drill="0.8"/>
-<pad name="3" x="-7.62" y="5.08" drill="0.8"/>
-<pad name="4" x="-7.62" y="2.54" drill="0.8"/>
-<pad name="5" x="-7.62" y="0" drill="0.8"/>
-<pad name="6" x="-7.62" y="-2.54" drill="0.8"/>
-<pad name="7" x="-7.62" y="-5.08" drill="0.8"/>
-<pad name="8" x="-7.62" y="-7.62" drill="0.8"/>
-<pad name="9" x="-7.62" y="-10.16" drill="0.8"/>
-<pad name="10" x="-7.62" y="-12.7" drill="0.8"/>
-<pad name="11" x="-7.62" y="-15.24" drill="0.8"/>
-<pad name="12" x="-7.62" y="-17.78" drill="0.8"/>
-<pad name="VBATT" x="-5.08" y="-17.78" drill="0.8"/>
-<pad name="3.3V1" x="-2.54" y="-17.78" drill="0.8"/>
-<pad name="GND2" x="0" y="-17.78" drill="0.8"/>
-<pad name="ON/OFF" x="5.08" y="-17.78" drill="0.8"/>
-<pad name="13" x="7.62" y="-17.78" drill="0.8"/>
-<pad name="14" x="7.62" y="-15.24" drill="0.8"/>
-<pad name="15" x="7.62" y="-12.7" drill="0.8"/>
-<pad name="16" x="7.62" y="-10.16" drill="0.8"/>
-<pad name="17" x="7.62" y="-7.62" drill="0.8"/>
-<pad name="18" x="7.62" y="-5.08" drill="0.8"/>
-<pad name="19" x="7.62" y="-2.54" drill="0.8"/>
-<pad name="20" x="7.62" y="0" drill="0.8"/>
-<pad name="21" x="7.62" y="2.54" drill="0.8"/>
-<pad name="22" x="7.62" y="5.08" drill="0.8"/>
-<pad name="23" x="7.62" y="7.62" drill="0.8"/>
-<pad name="3.3V2" x="7.62" y="10.16" drill="0.8"/>
-<pad name="GND3" x="7.62" y="12.7" drill="0.8"/>
-<pad name="VIN" x="7.62" y="15.24" drill="0.8"/>
-<pad name="VUSB" x="5.08" y="12.7" drill="0.8"/>
-<wire x1="8.89" y1="16.51" x2="8.89" y2="-19.05" width="0.127" layer="21"/>
-<wire x1="8.89" y1="-19.05" x2="-8.89" y2="-19.05" width="0.127" layer="21"/>
-<wire x1="-8.89" y1="-19.05" x2="-8.89" y2="16.51" width="0.127" layer="21"/>
-<pad name="PROGRAM" x="2.54" y="-17.78" drill="0.8"/>
-<wire x1="-8.89" y1="16.51" x2="8.89" y2="16.51" width="0.1524" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="TEENSY4.0">
-<wire x1="-53.34" y1="25.4" x2="0" y2="25.4" width="0.1524" layer="94"/>
-<wire x1="0" y1="25.4" x2="0" y2="-60.96" width="0.1524" layer="94"/>
-<wire x1="0" y1="-60.96" x2="-53.34" y2="-60.96" width="0.1524" layer="94"/>
-<wire x1="-53.34" y1="-60.96" x2="-53.34" y2="25.4" width="0.1524" layer="94"/>
-<pin name="0/RX1/CRX2/PWM" x="-58.42" y="17.78" length="middle"/>
-<pin name="1/TX1/CTX2/PWM" x="-58.42" y="12.7" length="middle"/>
-<pin name="2/OUT2/PWM" x="-58.42" y="7.62" length="middle"/>
-<pin name="3/LRCLK2/PWM" x="-58.42" y="2.54" length="middle"/>
-<pin name="4/BCLK2/PWM" x="-58.42" y="-2.54" length="middle"/>
-<pin name="5/IN2/PWM" x="-58.42" y="-7.62" length="middle"/>
-<pin name="6/OUT1D/PWM" x="-58.42" y="-12.7" length="middle"/>
-<pin name="7/RX2/OUT1A" x="-58.42" y="-17.78" length="middle"/>
-<pin name="8/TX2/IN1/PWM" x="-58.42" y="-22.86" length="middle"/>
-<pin name="9/OUT1C/PWM" x="-58.42" y="-27.94" length="middle"/>
-<pin name="10/CS/MQSR/PWM" x="-58.42" y="-33.02" length="middle"/>
-<pin name="11/MOSI/CTX1/PWM" x="-58.42" y="-38.1" length="middle"/>
-<pin name="VIN" x="5.08" y="22.86" length="middle" rot="R180"/>
-<pin name="GND3" x="5.08" y="20.32" length="middle" rot="R180"/>
-<pin name="3.3V2" x="5.08" y="17.78" length="middle" rot="R180"/>
-<pin name="13/(LED)/SCK/CRX1" x="5.08" y="-43.18" length="middle" rot="R180"/>
-<pin name="23/A9/CRX1/MCLK1/PWM" x="5.08" y="7.62" length="middle" rot="R180"/>
-<pin name="22/A8/CTX1/PWM" x="5.08" y="2.54" length="middle" rot="R180"/>
-<pin name="21/A7/RX5/BCLK1" x="5.08" y="-2.54" length="middle" rot="R180"/>
-<pin name="20/A6/TX5/LRCLK1" x="5.08" y="-7.62" length="middle" rot="R180"/>
-<pin name="18/A4/SDA0/PWM" x="5.08" y="-17.78" length="middle" rot="R180"/>
-<pin name="19/A5/SCL0/PWM" x="5.08" y="-12.7" length="middle" rot="R180"/>
-<pin name="17/A3/TX4/SDA1" x="5.08" y="-22.86" length="middle" rot="R180"/>
-<pin name="16/A2/RX4/SCL1" x="5.08" y="-27.94" length="middle" rot="R180"/>
-<pin name="15/A1/RX3/S/PDIFIN/PWM" x="5.08" y="-33.02" length="middle" rot="R180"/>
-<pin name="12/MISO/MQSL/PWM" x="-58.42" y="-43.18" length="middle"/>
-<pin name="14/A0/TX3/S/PDIFOUT/PWM" x="5.08" y="-38.1" length="middle" rot="R180"/>
-<pin name="GND1" x="-58.42" y="22.86" length="middle"/>
-<pin name="VBATT" x="-48.26" y="-66.04" length="middle" rot="R90"/>
-<pin name="3.3V1" x="-40.64" y="-66.04" length="middle" rot="R90"/>
-<pin name="GND2" x="-33.02" y="-66.04" length="middle" rot="R90"/>
-<pin name="PROGRAM" x="-25.4" y="-66.04" length="middle" rot="R90"/>
-<pin name="ON/OFF" x="-17.78" y="-66.04" length="middle" rot="R90"/>
-<pin name="VUSB" x="-12.7" y="30.48" length="middle" rot="R270"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="TEENSY4.0">
-<gates>
-<gate name="G$1" symbol="TEENSY4.0" x="25.4" y="33.02"/>
-</gates>
-<devices>
-<device name="" package="TEENSY4.0">
-<connects>
-<connect gate="G$1" pin="0/RX1/CRX2/PWM" pad="0"/>
-<connect gate="G$1" pin="1/TX1/CTX2/PWM" pad="1"/>
-<connect gate="G$1" pin="10/CS/MQSR/PWM" pad="10"/>
-<connect gate="G$1" pin="11/MOSI/CTX1/PWM" pad="11"/>
-<connect gate="G$1" pin="12/MISO/MQSL/PWM" pad="12"/>
-<connect gate="G$1" pin="13/(LED)/SCK/CRX1" pad="13"/>
-<connect gate="G$1" pin="14/A0/TX3/S/PDIFOUT/PWM" pad="14"/>
-<connect gate="G$1" pin="15/A1/RX3/S/PDIFIN/PWM" pad="15"/>
-<connect gate="G$1" pin="16/A2/RX4/SCL1" pad="16"/>
-<connect gate="G$1" pin="17/A3/TX4/SDA1" pad="17"/>
-<connect gate="G$1" pin="18/A4/SDA0/PWM" pad="18"/>
-<connect gate="G$1" pin="19/A5/SCL0/PWM" pad="19"/>
-<connect gate="G$1" pin="2/OUT2/PWM" pad="2"/>
-<connect gate="G$1" pin="20/A6/TX5/LRCLK1" pad="20"/>
-<connect gate="G$1" pin="21/A7/RX5/BCLK1" pad="21"/>
-<connect gate="G$1" pin="22/A8/CTX1/PWM" pad="22"/>
-<connect gate="G$1" pin="23/A9/CRX1/MCLK1/PWM" pad="23"/>
-<connect gate="G$1" pin="3.3V1" pad="3.3V1"/>
-<connect gate="G$1" pin="3.3V2" pad="3.3V2"/>
-<connect gate="G$1" pin="3/LRCLK2/PWM" pad="3"/>
-<connect gate="G$1" pin="4/BCLK2/PWM" pad="4"/>
-<connect gate="G$1" pin="5/IN2/PWM" pad="5"/>
-<connect gate="G$1" pin="6/OUT1D/PWM" pad="6"/>
-<connect gate="G$1" pin="7/RX2/OUT1A" pad="7"/>
-<connect gate="G$1" pin="8/TX2/IN1/PWM" pad="8"/>
-<connect gate="G$1" pin="9/OUT1C/PWM" pad="9"/>
-<connect gate="G$1" pin="GND1" pad="GND1"/>
-<connect gate="G$1" pin="GND2" pad="GND2"/>
-<connect gate="G$1" pin="GND3" pad="GND3"/>
-<connect gate="G$1" pin="ON/OFF" pad="ON/OFF"/>
-<connect gate="G$1" pin="PROGRAM" pad="PROGRAM"/>
-<connect gate="G$1" pin="VBATT" pad="VBATT"/>
-<connect gate="G$1" pin="VIN" pad="VIN"/>
-<connect gate="G$1" pin="VUSB" pad="VUSB"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -9859,9 +9910,9 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <groups>
 <schematic_group name="XBEE"/>
 <schematic_group name="LED_BANK1"/>
-<schematic_group name="TEENSY_4.0"/>
 </groups>
 <parts>
+<part name="TEENSY3.6" library="Teensy_3_and_LC_Series_Boards_v1.4" deviceset="TEENSY_3.6_DIL" device=""/>
 <part name="FRAME2" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4L-LOC" device=""/>
 <part name="XB1" library="maxstream" library_urn="urn:adsk.eagle:library:270" deviceset="XBEE" device="-PRO" package3d_urn="urn:adsk.eagle:package:18008/1"/>
 <part name="U$28" library="microbuilder" deviceset="GND" device=""/>
@@ -9877,10 +9928,9 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="LED3" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:6240537/1"/>
 <part name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0309/10" package3d_urn="urn:adsk.eagle:package:23567/1" value="1k"/>
 <part name="U$2" library="microbuilder" deviceset="GND" device=""/>
-<part name="U$3" library="Teensy 4.0" deviceset="TEENSY4.0" device=""/>
-<part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
-<part name="U$4" library="microbuilder" deviceset="GND" device=""/>
-<part name="U$5" library="microbuilder" deviceset="GND" device=""/>
+<part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
+<part name="U$14" library="microbuilder" deviceset="GND" device=""/>
+<part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9892,6 +9942,10 @@ NASA Student Launch
 </text>
 </plain>
 <instances>
+<instance part="TEENSY3.6" gate="G$1" x="193.04" y="99.06" smashed="yes">
+<attribute name="NAME" x="184.912" y="156.21" size="1.27" layer="95" font="vector" ratio="15"/>
+<attribute name="VALUE" x="187.706" y="43.18" size="1.27" layer="96" font="vector" ratio="15"/>
+</instance>
 <instance part="FRAME2" gate="G$1" x="0" y="0" smashed="yes">
 <attribute name="DRAWING_NAME" x="217.17" y="15.24" size="2.54" layer="94"/>
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94"/>
@@ -9949,15 +10003,14 @@ NASA Student Launch
 <instance part="U$2" gate="G$1" x="50.8" y="33.02" smashed="yes" rot="MR0" grouprefs="LED_BANK1">
 <attribute name="VALUE" x="52.324" y="30.48" size="1.27" layer="96" rot="MR0"/>
 </instance>
-<instance part="U$3" gate="G$1" x="198.12" y="127" smashed="yes" grouprefs="TEENSY_4.0"/>
-<instance part="+3V2" gate="G$1" x="226.06" y="138.43" smashed="yes" rot="R270" grouprefs="TEENSY_4.0">
-<attribute name="VALUE" x="233.68" y="138.43" size="1.778" layer="96" rot="R180"/>
+<instance part="+3V1" gate="G$1" x="227.33" y="147.32" smashed="yes" rot="R270">
+<attribute name="VALUE" x="234.95" y="147.32" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="U$4" gate="G$1" x="232.41" y="142.24" smashed="yes" grouprefs="TEENSY_4.0">
-<attribute name="VALUE" x="230.886" y="143.51" size="1.27" layer="96" rot="R180"/>
+<instance part="U$14" gate="G$1" x="222.25" y="101.6" smashed="yes">
+<attribute name="VALUE" x="228.346" y="102.87" size="1.27" layer="96" rot="R180"/>
 </instance>
-<instance part="U$5" gate="G$1" x="166.37" y="43.18" smashed="yes" grouprefs="TEENSY_4.0">
-<attribute name="VALUE" x="164.846" y="44.45" size="1.27" layer="96" rot="R180"/>
+<instance part="U$1" gate="G$1" x="222.25" y="137.16" smashed="yes">
+<attribute name="VALUE" x="220.726" y="138.43" size="1.27" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
@@ -9997,17 +10050,16 @@ NASA Student Launch
 <junction x="50.8" y="35.56"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="GND3"/>
-<wire x1="203.2" y1="147.32" x2="220.98" y2="147.32" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<pinref part="U$4" gate="G$1" pin="GND"/>
-<wire x1="220.98" y1="147.32" x2="220.98" y2="144.78" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<wire x1="220.98" y1="144.78" x2="232.41" y2="144.78" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="AGND"/>
+<pinref part="U$14" gate="G$1" pin="GND"/>
+<wire x1="218.44" y1="106.68" x2="222.25" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="222.25" y1="106.68" x2="222.25" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="GND2"/>
-<wire x1="165.1" y1="60.96" x2="165.1" y2="45.72" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<pinref part="U$5" gate="G$1" pin="GND"/>
-<wire x1="166.37" y1="45.72" x2="165.1" y2="45.72" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="GND"/>
+<pinref part="U$1" gate="G$1" pin="GND"/>
+<wire x1="218.44" y1="142.24" x2="222.25" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="222.25" y1="142.24" x2="222.25" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -10029,11 +10081,9 @@ NASA Student Launch
 <junction x="93.98" y="91.44" grouprefs="XBEE"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="3.3V2"/>
-<wire x1="203.2" y1="144.78" x2="203.2" y2="139.7" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<wire x1="203.2" y1="139.7" x2="210.82" y2="139.7" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<wire x1="210.82" y1="139.7" x2="223.52" y2="138.43" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<pinref part="+3V2" gate="G$1" pin="+3V3"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="3.3V"/>
+<pinref part="+3V1" gate="G$1" pin="+3V3"/>
+<wire x1="218.44" y1="147.32" x2="224.79" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="XBEE_RX" class="0">
@@ -10043,9 +10093,9 @@ NASA Student Launch
 <label x="81.28" y="106.68" size="1.778" layer="95" grouprefs="XBEE"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="1/TX1/CTX2/PWM"/>
-<wire x1="139.7" y1="139.7" x2="127" y2="139.7" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<label x="116.84" y="139.7" size="1.778" layer="95" grouprefs="TEENSY_4.0"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="1/TX1/MISO1/T"/>
+<wire x1="165.1" y1="147.32" x2="152.4" y2="147.32" width="0.1524" layer="91"/>
+<label x="139.7" y="147.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="XBEE_TX" class="0">
@@ -10055,9 +10105,9 @@ NASA Student Launch
 <label x="81.28" y="109.22" size="1.778" layer="95" grouprefs="XBEE"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="0/RX1/CRX2/PWM"/>
-<wire x1="139.7" y1="144.78" x2="127" y2="144.78" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<label x="116.84" y="144.78" size="1.778" layer="95" grouprefs="TEENSY_4.0"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="0/RX1/MOSI1/T"/>
+<wire x1="165.1" y1="149.86" x2="152.4" y2="149.86" width="0.1524" layer="91"/>
+<label x="139.7" y="149.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="XBEE_EN" class="0">
@@ -10067,9 +10117,9 @@ NASA Student Launch
 <label x="81.28" y="114.3" size="1.778" layer="95" grouprefs="XBEE"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="22/A8/CTX1/PWM"/>
-<wire x1="203.2" y1="129.54" x2="226.06" y2="129.54" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<label x="228.6" y="129.54" size="1.778" layer="95" grouprefs="TEENSY_4.0"/>
+<wire x1="165.1" y1="93.98" x2="154.94" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="22/A8/T/PWM"/>
+<label x="142.24" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="XBEE_RST" class="0">
@@ -10079,9 +10129,9 @@ NASA Student Launch
 <label x="81.28" y="93.98" size="1.778" layer="95" grouprefs="XBEE"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="20/A6/TX5/LRCLK1"/>
-<wire x1="203.2" y1="119.38" x2="226.06" y2="119.38" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<label x="228.6" y="119.38" size="1.778" layer="95"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="20/A6/PWM"/>
+<wire x1="165.1" y1="99.06" x2="154.94" y2="99.06" width="0.1524" layer="91"/>
+<label x="142.24" y="99.06" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -10111,12 +10161,22 @@ NASA Student Launch
 <wire x1="74.93" y1="50.8" x2="81.28" y2="50.8" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <label x="88.9" y="50.8" size="1.778" layer="95" rot="MR0" grouprefs="LED_BANK1"/>
 </segment>
+<segment>
+<pinref part="TEENSY3.6" gate="G$1" pin="A21/DAC0"/>
+<wire x1="218.44" y1="99.06" x2="228.6" y2="99.06" width="0.1524" layer="91"/>
+<label x="231.14" y="99.06" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LED_2" class="0">
 <segment>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="43.18" x2="74.93" y2="43.18" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <label x="88.9" y="43.18" size="1.778" layer="95" rot="MR0" grouprefs="LED_BANK1"/>
+</segment>
+<segment>
+<pinref part="TEENSY3.6" gate="G$1" pin="38/A19/SDA1/PWM"/>
+<wire x1="165.1" y1="53.34" x2="154.94" y2="53.34" width="0.1524" layer="91"/>
+<label x="147.32" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LED_1" class="0">
@@ -10125,12 +10185,17 @@ NASA Student Launch
 <wire x1="74.93" y1="35.56" x2="81.28" y2="35.56" width="0.1524" layer="91" grouprefs="LED_BANK1"/>
 <label x="88.9" y="35.56" size="1.778" layer="95" rot="MR0" grouprefs="LED_BANK1"/>
 </segment>
+<segment>
+<pinref part="TEENSY3.6" gate="G$1" pin="36/A17/PWM"/>
+<wire x1="165.1" y1="58.42" x2="154.94" y2="58.42" width="0.1524" layer="91"/>
+<label x="147.32" y="58.42" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="V_USB" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="VIN"/>
-<wire x1="203.2" y1="149.86" x2="223.52" y2="149.86" width="0.1524" layer="91" grouprefs="TEENSY_4.0"/>
-<label x="223.52" y="152.4" size="1.778" layer="95" grouprefs="TEENSY_4.0"/>
+<pinref part="TEENSY3.6" gate="G$1" pin="VIN"/>
+<wire x1="218.44" y1="149.86" x2="226.06" y2="149.86" width="0.1524" layer="91"/>
+<label x="228.6" y="149.86" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
