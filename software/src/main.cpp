@@ -5,25 +5,46 @@
 
 #define xbeeFreq 123456789
 
+typedef enum {
+   PreLaunch,
+   OnPad,
+   Flight
+} State;
+
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(9600);//begin serial communication
 
     while(!Serial){
         ;//Waiting for the Serial port to connect
     }
-
     Serial.println("Serial port connected");
-    //print something to the ground control saying that connection has been established
 
-    // put your setup code here, to run once:
 }
 
 void loop()
 {
     while(Serial.available())
     {
-        //char[] = xbee.receive();
+        //read and send the logged data to the GUI
+        char data[] = "No data available";
+        //data = xbee.receive();
+        Serial.println(data);//sends transmitted data to the GUI
+
+        //reads current state from the GUI, then executes some tasks accordingly
+        State currState = (State)Serial.read();
+        switch(currState){
+            case PreLaunch:{
+                ;//do stuff during pre-launch
+            }
+            case OnPad:{
+                ;//do stuff that we'd do while sitting on the pad before flight
+            }
+            case Flight:{
+                ;//operate in flight mode here
+            }
+        }
+
         /*
         * Recieve SCA data from Xbee
         *   Send that data to the ground control
@@ -31,5 +52,5 @@ void loop()
         *   if there's a command, send it to SCA via xbee
         */
     }
-    // put your main code here, to run repeatedly:
+
 }
