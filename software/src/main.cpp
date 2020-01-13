@@ -35,14 +35,16 @@ void loop()
         State currState = (State)Serial.read();
         switch(currState){
             case PreLaunch:{
-                ;//do stuff during pre-launch
+                break;//do stuff during pre-launch
             }
             case OnPad:{
-                ;//do stuff that we'd do while sitting on the pad before flight
+                break;//do stuff that we'd do while sitting on the pad before flight
             }
             case Flight:{
-                ;//operate in flight mode here
+                break;//operate in flight mode here
             }
+            default:
+                Serial.println("You sent the wrong state!!");
         }
 
         /*
