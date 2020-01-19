@@ -15,17 +15,24 @@ void setup()
 {
     Serial.begin(9600);//begin serial communication for GUI
 
-    for(int x = 0; !Serial && x < 2000; x++){
+    int counter;
+    for(counter = 0; !Serial && counter < 2000; counter++){
         ;//Waiting for the Serial port to connect
     }
-    Serial.println("Serial port connected");
+    if(counter == 2000)
+        Serial.println("Serial port couldn't connect");
+    else
+        Serial.println("Serial port connected");
 
     Serial2.begin(9600);//begin serial communication for xbees
 
-    for(int x = 0; !Serial2 && x < 2000; x++){
+    for(counter = 0; !Serial2 && counter < 2000; counter++){
         ;//Waiting for the Serial2 port to connect
     }
-    Serial.println("Serial2 port connected");
+    if(counter == 2000)
+        Serial.println("Serial port couldn't connect");
+    else
+        Serial.println("Serial port connected");
 
 }
 
