@@ -36,7 +36,7 @@ void loop()
         //read and send the logged data to the GUI
         if(Serial2.available() > 0)
         {
-            String logData = Serial2.read();
+            String logData = Serial2.readString();
             Serial.println(logData);//sends transmitted data to the GUI
         }
         else
@@ -45,29 +45,33 @@ void loop()
         }
 
         //reads current state from the GUI, then executes some tasks accordingly
-        if(Serial.available() > 0)
+        uint8_t mode = Serial.read();
+        State currState = (State) mode;
+        String modeData = Serial.readString();
+        if(Serial2.availableForWrite())
         {
-            uint8_t mode = Serial.read();
-            State currState = (State) mode;
-            String modeData = Serial.readString();
             switch(currState){
-                case Ready:{
-                    //Serial2.println(mode + "," + modeData);
-                    Serial2.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
-                    break;
-                }
-                case StartUp:{
-                    //Serial2.println(mode + "," + modeData);
-                    Serial2.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
-                    break;
-                }
-                case Flight:{
-                    Serial.println("Cannot enter flight mode through the ground control!!");
-                    break;
-                }
-                default:
-                    Serial.println("You sent the wrong state!!");
+            case Ready:{
+                //Serial2.println(mode + "," + modeData);
+                Serial2.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
+                break;
             }
+            case StartUp:{
+                //Serial2.println(mode + "," + modeData);
+                Serial2.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
+                break;
+            }
+            case Flight:{
+                Serial.println("Cannot enter flight mode through the ground control!!");
+                break;
+            }
+            default:
+                Serial.println("You sent the wrong state!!");
+            }
+        }
+        else
+        {
+            Serial.println("Couldn't write to xbees");
         }
 
     }
