@@ -6,8 +6,8 @@
 #define xbeeFreq 123456789
 
 typedef enum {
-   PreLaunch,
-   OnPad,
+   StartUp,
+   Ready,
    Flight
 } State;
 
@@ -27,32 +27,42 @@ void loop()
     while(Serial.available())
     {
         //read and send the logged data to the GUI
-        char data[] = "No data available";
-        //data = xbee.receive();
-        Serial.println(data);//sends transmitted data to the GUI
-
-        //reads current state from the GUI, then executes some tasks accordingly
-        State currState = (State)Serial.read();
-        switch(currState){
-            case PreLaunch:{
-                break;//do stuff during pre-launch
-            }
-            case OnPad:{
-                break;//do stuff that we'd do while sitting on the pad before flight
-            }
-            case Flight:{
-                break;//operate in flight mode here
-            }
-            default:
-                Serial.println("You sent the wrong state!!");
+        if(Serial2.available() > 0)
+        {
+            String logData = Serial2.read();
+            Serial.println(logData);//sends transmitted data to the GUI
+        }
+        else
+        {
+            Serial.println("No data available");
         }
 
-        /*
-        * Recieve SCA data from Xbee
-        *   Send that data to the ground control
-        * See if there's a command to send
-        *   if there's a command, send it to SCA via xbee
-        */
+        //reads current state from the GUI, then executes some tasks accordingly
+        if(Serial.available() > 0)
+        {
+            uint8_t mode = Serial.read();
+            State currState = (State) mode;
+            String modeData = Serial.readString();
+            switch(currState){
+                case Ready:{
+                    //Serial2.println(mode + "," + modeData);
+                    Serial2.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
+                    break;
+                }
+                case StartUp:{
+                    //Serial2.println(mode + "," + modeData);
+                    Serial2.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
+                    break;
+                }
+                case Flight:{
+                    Serial.println("Cannot enter flight mode through the ground control!!");
+                    break;
+                }
+                default:
+                    Serial.println("You sent the wrong state!!");
+            }
+        }
+
     }
 
 }
