@@ -13,12 +13,19 @@ typedef enum {
 
 void setup()
 {
-    Serial.begin(9600);//begin serial communication
+    Serial.begin(9600);//begin serial communication for GUI
 
-    while(!Serial){
+    for(int x = 0; !Serial && x < 2000; x++){
         ;//Waiting for the Serial port to connect
     }
     Serial.println("Serial port connected");
+
+    Serial2.begin(9600);//begin serial communication for xbees
+
+    for(int x = 0; !Serial2 && x < 2000; x++){
+        ;//Waiting for the Serial2 port to connect
+    }
+    Serial.println("Serial2 port connected");
 
 }
 
