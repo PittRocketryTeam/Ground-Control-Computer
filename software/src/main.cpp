@@ -11,106 +11,73 @@ typedef enum {
 
 void setup()
 {
-    Serial.begin(9600);//begin serial communication for GUI
-    delay(3000);
-
-    Serial1.begin(9600);
-    delay(3000);
-
-    pinMode(ledStat, OUTPUT);
-    pinMode(ledStat2, OUTPUT);
-
-    /*
-    int counter;
-    for(counter = 0; !Serial && counter < 2000; counter++){
-        ;//Waiting for the Serial port to connect
+    Serial.begin(9600);//begin serial communication for the serial monitor
+    while(!Serial)
+    {
+        ;//wait until Serial connects
     }
-    if(counter == 2000)
-        Serial.println("Serial port couldn't connect");
-    else
-        Serial.println("Serial port connected");
+    Serial.println("Serial connection opened");
 
-    Serial4.begin(9600);//begin serial communication for xbees
-
-    for(counter = 0; !Serial4 && counter < 2000; counter++){
-        ;//Waiting for the Serial4 port to connect
+    Serial1.begin(9600);//begin serial connunication for the Xbee 
+    while(!Serial1)
+    {
+        ;//wait until Serial1 connects
     }
-    if(counter == 2000)
-        Serial.println("Serial port couldn't connect");
-    else
-        Serial.println("Serial port connected");
-    */
+    Serial.println("Serial 1 connection opened");
+
+    Serial2.begin(9600);//begin serial connunication for the GUI
+    while(!Serial2)
+    {
+        ;//wait until Serial2 connects
+    }
+    Serial.println("Serial 2 connection opened");
 }
 
 void loop()
 {
-        char logData;
-        //Serial.println("At main loop");
-        //Serial.println("Got here");
-        //read and send the logged data to the GUI
-        while(Serial1.available())
+        char logData, mode;
+        String modeData;
+        uint8_t changedMode;
+        
+        while(Serial1.available())//maybe convert to an if -- could change the mode while reading in data?
         {
-            //String logData = Serial1.readStringUntil('\n');
             logData = Serial1.read();
-            Serial.print(logData);//sends transmitted data to the GUI
+            Serial2.print(logData);//sends the logged data from SCA to the GUI
         }
 
-        /*
-        if(!Serial1.available())
-        {
-            delay(1000);
-            digitalWrite(ledStat2, HIGH);
-            delay(1000);
-            digitalWrite(ledStat, LOW);
-        }
-        */
-        /*
-        if(Serial1.available() > 0)
-        {
-            //Serial.print("Serial 4 Available. Data: ");
-            //digitalWrite(ledStat, HIGH);
-            String logData = Serial1.readStringUntil('\n');
-            //String logData = Serial4.readString();
-            Serial.println(logData);//sends transmitted data to the GUI
-            //delay(1000);
-            //digitalWrite(ledStat, LOW);
-        }
-        else
-        {
-            delay(1000);
-            digitalWrite(ledStat2, HIGH);
-            delay(1000);
-            digitalWrite(ledStat, LOW);
-            //Serial.println("No data available");
-        }
-        */
-        //delay(1000);
-
-        /*
         //reads current state from the GUI, then executes some tasks accordingly
-        uint8_t mode = Serial.read();
+        mode = Serial2.read();
         State currState = (State) mode;
-        String modeData = Serial.readString();
-        if(Serial4.availableForWrite())
+        if(Serial2.available())
+        {
+            modeData = Serial2.readStringUntil('\0');
+            changedMode = 1;
+        }
+        
+        //if(Serial1.availableForWrite())
+        //{
+        if(changedMode)//implemented so the mode isn't sent each time
         {
             switch(currState){
-            case Ready:{
-                //Serial4.println(mode + "," + modeData);
-                Serial4.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
-                break;
+                case Ready:{
+                    Serial1.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
+                    break;
+                }
+                case StartUp:{
+                    Serial1.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
+                    break;
+                }
+                case Flight:{
+                    Serial.println("Cannot enter flight mode through the ground control!!");
+                    break;
+                }
+                default:{
+                    Serial.println("You sent the wrong state!!");
+                }
             }
-            case StartUp:{
-                //Serial4.println(mode + "," + modeData);
-                Serial4.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
-                break;
-            }
-            case Flight:{
-                Serial.println("Cannot enter flight mode through the ground control!!");
-                break;
-            }
-            default:
-                Serial.println("You sent the wrong state!!");
-            }
+            changedMode = 0;
+        }
+        /*
         }
         else
         {
