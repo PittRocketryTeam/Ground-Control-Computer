@@ -39,25 +39,18 @@ void loop()
         String modeData;
         uint8_t changedMode;
         
-        while(Serial1.available())//maybe convert to an if -- could change the mode while reading in data?
+        if(Serial1.available())//if statement b/c the entire thing is already in a loop. Will allow the mode to be changed during reading
         {
             logData = Serial1.read();
             Serial2.print(logData);//sends the logged data from SCA to the GUI
         }
 
-        //reads current state from the GUI, then executes some tasks accordingly
-        mode = Serial2.read();
-        State currState = (State) mode;
-        if(Serial2.available())
+        if(Serial2.available())//reads current state from the GUI, then executes some tasks accordingly
         {
+            mode = Serial2.read();
+            State currState = (State) mode;
             modeData = Serial2.readStringUntil('\0');
-            changedMode = 1;
-        }
-        
-        //if(Serial1.availableForWrite())
-        //{
-        if(changedMode)//implemented so the mode isn't sent each time
-        {
+
             switch(currState){
                 case Ready:{
                     Serial1.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
@@ -75,14 +68,6 @@ void loop()
                     Serial.println("You sent the wrong state!!");
                 }
             }
-            changedMode = 0;
         }
-        /*
-        }
-        else
-        {
-            Serial.println("Couldn't write to xbees");
-        }
-        */
 
 }
