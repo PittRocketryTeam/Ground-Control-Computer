@@ -35,21 +35,29 @@ void setup()
 
 void loop()
 {
-    char logData, mode;
-    String modeData;
+    char mode;
+    String logData, modeData;
     uint8_t changedMode;
     
     if(Serial1.available())//if statement b/c the entire thing is already in a loop. Will allow the mode to be changed during reading
     {
-        logData = Serial1.read();
-        Serial2.print(logData);//sends the logged data from SCA to the GUI
+        logData = Serial1.readStringUntil('\n');
+        //logData += "\n";
+        if(logData != "")
+        {
+            Serial.println(logData);//sends the logged data from SCA to the GUI. Should be sending a zero terminator then new line at the end
+        }
+        logData = "";
     }
 
-    if(Serial2.available())//reads current state from the GUI, then executes some tasks accordingly
+    //if(Serial2.available())//reads current state from the GUI, then executes some tasks accordingly
+    if(1)
     {
-        mode = Serial2.read();
+        //mode = Serial2.read();
+        mode = 1;
         State currState = (State) mode;
-        modeData = Serial2.readStringUntil('\0');
+        modeData = "hi";
+        //modeData = Serial2.readStringUntil('\0');
 
         switch(currState){
             case Ready:{
