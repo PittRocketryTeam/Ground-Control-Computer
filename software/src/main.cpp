@@ -1,58 +1,81 @@
 #include <Arduino.h>
 
-#define xbeepin1 1
-#define xbeepin2 2
-
-#define xbeeFreq 123456789
+#define ledStat 36
+#define ledStat2 38
 
 typedef enum {
-   PreLaunch,
-   OnPad,
+   StartUp,
+   Ready,
    Flight
 } State;
 
 void setup()
 {
-    Serial.begin(9600);//begin serial communication
-
-    while(!Serial){
-        ;//Waiting for the Serial port to connect
+    Serial.begin(9600);//begin serial communication for the serial monitor
+    while(!Serial)
+    {
+        ;//wait until Serial connects
     }
-    Serial.println("Serial port connected");
+    Serial.println("Serial connection opened");
 
+    Serial1.begin(9600);//begin serial connunication for the Xbee 
+    while(!Serial1)
+    {
+        ;//wait until Serial1 connects
+    }
+    Serial.println("Serial 1 connection opened");
+
+    Serial2.begin(9600);//begin serial connunication for the GUI
+    while(!Serial2)
+    {
+        ;//wait until Serial2 connects
+    }
+    Serial.println("Serial 2 connection opened");
 }
 
 void loop()
 {
-    while(Serial.available())
+    char mode;
+    String logData, modeData;
+    uint8_t changedMode;
+    
+    if(Serial1.available())//if statement b/c the entire thing is already in a loop. Will allow the mode to be changed during reading
     {
-        //read and send the logged data to the GUI
-        char data[] = "No data available";
-        //data = xbee.receive();
-        Serial.println(data);//sends transmitted data to the GUI
+        logData = Serial1.readStringUntil('\n');
+        //logData += "\n";
+        if(logData != "")
+        {
+            Serial.println(logData);//sends the logged data from SCA to the GUI. Should be sending a zero terminator then new line at the end
+        }
+        logData = "";
+    }
 
-        //reads current state from the GUI, then executes some tasks accordingly
-        State currState = (State)Serial.read();
+    //if(Serial2.available())//reads current state from the GUI, then executes some tasks accordingly
+    if(1)
+    {
+        //mode = Serial2.read();
+        mode = 1;
+        State currState = (State) mode;
+        modeData = "hi";
+        //modeData = Serial2.readStringUntil('\0');
+
         switch(currState){
-            case PreLaunch:{
-                break;//do stuff during pre-launch
+            case Ready:{
+                Serial1.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
+                break;
             }
-            case OnPad:{
-                break;//do stuff that we'd do while sitting on the pad before flight
+            case StartUp:{
+                Serial1.printf("%d,%s\n", mode, modeData);//sending the mode to the xbee for transmission
+                break;
             }
             case Flight:{
-                break;//operate in flight mode here
+                Serial.println("Cannot enter flight mode through the ground control!!");
+                break;
             }
-            default:
+            default:{
                 Serial.println("You sent the wrong state!!");
+            }
         }
-
-        /*
-        * Recieve SCA data from Xbee
-        *   Send that data to the ground control
-        * See if there's a command to send
-        *   if there's a command, send it to SCA via xbee
-        */
     }
 
 }
