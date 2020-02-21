@@ -178,11 +178,11 @@ mapChoices = ['Map','Altitude','Battery Temp',
 chartChoices = ['Altitude', 'Battery Temp',
            '3V3 Rail Voltage', '5V Rail Voltage', 'VBATT','Acceleration','Pressure']
 statsChoices = ['Pre-Flight','Flight','Post-Flight']
-statusChoices = ['Idle','On Pad','Flight']
+statusChoices = ['Idle','On Pad']
 
 statusSelect = Combobox(statsSelectFrame,values = statusChoices,state = 'readonly')
 statusSelect.place(x = 250,y = 5)
-statusSelect.current(1)
+statusSelect.current(0)
 
 statusSelectLabel = Label(statsSelectFrame,text = "SCA Computer Mode Selection: ",background = 'black', fg = 'white', font = ("arial",10))
 statusSelectLabel.place(x = 15,y=5)
@@ -309,7 +309,6 @@ def getMap(lat, lon):
     f.close()
 
 g = geocoder.ip('me')
-print(g.latlng)
 wthr.setLocation(g.latlng[0], g.latlng[1])
 updateWeather(wthr)
 
@@ -427,6 +426,9 @@ def _run():
     if plot2Str != currentPlots[2]:
         plot2(data['time'], data[plot2Str])
         chart2Fig.suptitle(plot2Str.upper())
+
+    if len(line) > 0:
+        print(line)
     
     if len(line) > 1 and line.count(",") == 15:
         t, eulerX, eulerY, eulerZ, accelX, accelY, accelZ, lat, lon, temp,pressure,altitude,_7v4,_3v3,_5v,trash = line.split(',') 
@@ -461,7 +463,7 @@ def _run():
         #dont plot every point right away
         if len(data['time']) % 1 == 0:
 
-            print(line)
+            
             #upadate the labels with the appropriate informatin
             batt3V3.config(text="3V3 Rail Voltage: "+str(_3v3), foreground = "green" if float(_3v3) > 3.3 else ("yellow" if float(_3v3) > 3.2 else "red"))
             batt5V.config(text="5V Rail Voltage: "+str(_5v), foreground = "green" if float(_5v) > 5 else ("yellow" if float(_5v) > 4.8 else "red"))
@@ -470,8 +472,8 @@ def _run():
             maxAlt.config(text="Maximum Altitude: "+str(max(data['altitude'])))
             longLabel.config(text = "Longitude: " + str(lon))
             latLabel.config(text = "Latitude: " + str(lat))
-            if lat != 0 and lon != 0:
-                dist.config(text = "Distance (m): " + str(haversine((data['lat'][0],data['lon'][0]),(lat/100,lon/100),unit=Unit.METERS)))
+            if float(lat) != 0 and float(lon) != 0:
+                dist.config(text = "Distance (m): " + str(haversine((data['lat'][0],data['lon'][0]),(float(lat)/100,float(lon)/100),unit=Unit.METERS)))
             padTimeLabel.config(text = "Pad Time (min): " + str(round((float(t) - startTime)/60000,2)))
 
             if len(data['time']) > 700:
@@ -514,8 +516,6 @@ def _run():
             teensy.write(0)
         if newState == 'On Pad':
             teensy.write(1)
-        if newState == 'Flight':
-            teensy.write(3)
 
     currentState = newState
 

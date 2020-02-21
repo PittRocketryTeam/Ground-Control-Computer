@@ -72,4 +72,5 @@ class device:
         if (self.ser.writable()):
             self.ser.write(str(data).encode('UTF-8'))
         else:
+            print("data is not writable")
             return 0
