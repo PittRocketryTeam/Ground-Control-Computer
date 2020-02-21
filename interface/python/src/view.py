@@ -17,6 +17,9 @@ import math
 import weather
 import geocoder
 matplotlib.use("TkAgg")
+import time
+from hardware import device
+from haversine import haversine, Unit
 
 #function to display figure
 def showFig(event, num):
@@ -170,11 +173,19 @@ combostyle.theme_create('combostyle', parent='alt',
 combostyle.theme_use('combostyle')
 
 #add selection boxes
-mapChoices = ['Map','Altitude','Battery Temp', 'Battery Voltages (All)',
+mapChoices = ['Map','Altitude','Battery Temp',
              '3V3 Rail Voltage', '5V Rail Voltage', 'VBATT']
 chartChoices = ['Altitude', 'Battery Temp',
-           'Battery Voltages (All)', '3V3 Rail Voltage', '5V Rail Voltage', 'VBATT']
+           '3V3 Rail Voltage', '5V Rail Voltage', 'VBATT','Acceleration','Pressure']
 statsChoices = ['Pre-Flight','Flight','Post-Flight']
+statusChoices = ['Idle','On Pad','Flight']
+
+statusSelect = Combobox(statsSelectFrame,values = statusChoices,state = 'readonly')
+statusSelect.place(x = 250,y = 5)
+statusSelect.current(1)
+
+statusSelectLabel = Label(statsSelectFrame,text = "SCA Computer Mode Selection: ",background = 'black', fg = 'white', font = ("arial",10))
+statusSelectLabel.place(x = 15,y=5)
 
 mapSelect = Combobox(mapSelectFrame, values=mapChoices, state='readonly')
 mapSelect.place(x = 0, y = 0)
@@ -182,7 +193,7 @@ mapSelect.current(1)
 
 chart1Select = Combobox(chart1SelectFrame, values = chartChoices, state = 'readonly')
 chart1Select.place(x=0, y=0)
-chart1Select.current(3)
+chart1Select.current(1)
 
 chart2Select = Combobox(chart2SelectFrame, values=chartChoices, state='readonly')
 chart2Select.place(x=0, y=0)
@@ -212,6 +223,27 @@ mainStatus.place(x = 350, y = 45)
 
 vehStatus = Label(statusFrame, text = "Vehicle Status:", bg = "black", foreground = "white", font=("arial",14))
 vehStatus.place(x = 350, y = 85)
+
+maxAlt = Label(statsFrame, text="Maximum Altitude: ",
+                  bg="black", foreground="white", font=("arial", 14))
+maxAlt.place(x=0, y=5)
+
+dist = Label(statsFrame, text="Distance: ",
+               bg="black", foreground="white", font=("arial", 14))
+dist.place(x=0, y=85)
+
+padTimeLabel = Label(statsFrame, text="Pad Time (min): ",
+               bg="black", foreground="white", font=("arial", 14))
+padTimeLabel.place(x=0, y=45)
+
+longLabel = Label(statsFrame, text="Longitude: ",
+                  bg="black", foreground="white", font=("arial", 14))
+longLabel.place(x=210, y=5)
+
+latLabel = Label(statsFrame, text="Lattitude: ",
+                  bg="black", foreground="white", font=("arial", 14))
+latLabel.place(x=210, y=45)
+
 
 
 #add image and title
@@ -278,8 +310,8 @@ def getMap(lat, lon):
 
 g = geocoder.ip('me')
 print(g.latlng)
-#wthr.setLocation(g.latlng[0], g.latlng[1])
-#updateWeather(wthr)
+wthr.setLocation(g.latlng[0], g.latlng[1])
+updateWeather(wthr)
 
 
 log = open(str(os.getcwd()) + "\\loggylog.csv")
@@ -294,7 +326,7 @@ data = {
     'accelX': [],
     'accelY': [],
     'accelZ': [],
-    'light': [],
+    'acceleration': [],
     '3v3 rail voltage': [],
     '5v rail voltage': [],
     'vbatt': [],
@@ -304,7 +336,8 @@ data = {
     'lonPixels': []
 }
 
-currentPlots = ['altitude','altitude','3v3']
+currentPlots = ['altitude','altitude','altitude']
+currentState = 'Idle'
 
 def plot0(x,y):
     mapLine.set_data(x,y)
@@ -363,9 +396,15 @@ def getPixel(lat,lon):
 
 startTime = 0
 
+#open serial comunications
+teensy = device()
+teensy.serialConnect()
+
+
 def _run():
-    global data, log, currentPlots, startTime, mapLine, mapAxis
-    line = log.readline()
+    global data, log, currentPlots, startTime, mapLine, mapAxis,currentState
+    #line = log.readline()
+    line = teensy.readLine()
 
     plot0Str = mapSelect.get().lower()
     plot1Str = chart1Select.get().lower()
@@ -389,8 +428,8 @@ def _run():
         plot2(data['time'], data[plot2Str])
         chart2Fig.suptitle(plot2Str.upper())
     
-    if len(line) > 1:
-        t,temp,pressure,altitude,eulerX,eulerY,eulerZ,accelX,accelY,accelZ,light,_3v3,_5v,_7v4,lat,lon = line.split(',')
+    if len(line) > 1 and line.count(",") == 15:
+        t, eulerX, eulerY, eulerZ, accelX, accelY, accelZ, lat, lon, temp,pressure,altitude,_7v4,_3v3,_5v,trash = line.split(',') 
         if len(data['time']) < 1:
             startTime = float(t)
 
@@ -404,27 +443,36 @@ def _run():
         data['accelX'].append(float(accelX))
         data['accelY'].append(float(accelY))
         data['accelZ'].append(float(accelZ))
-        data['light'].append(float(light))
         data['3v3 rail voltage'].append(float(_3v3))
         data['5v rail voltage'].append(float(_5v))
         data['vbatt'].append(float(_7v4))
-        data['lat'].append(float(lat))
-        data['lon'].append(float(lon))
+        if lat != 0 and lon != 0:
+            data['lat'].append(float(lat)/100)
+            data['lon'].append(float(lon)/100)
         data['latPixels'].append(getPixel(float(lat),float(lon))[0])
         data['lonPixels'].append(getPixel(float(lat), float(lon))[1])
+        data['acceleration'].append(
+            math.sqrt(math.pow(float(accelX),2) + math.pow(float(accelY),2) + math.pow(float(accelZ),2)))
 
         #get map image
         if len(data['lat']) == 1:
             getMap(data['lat'][0],data['lon'][0])
 
         #dont plot every point right away
-        if len(data['time']) % 5 == 0:
+        if len(data['time']) % 1 == 0:
 
+            print(line)
             #upadate the labels with the appropriate informatin
             batt3V3.config(text="3V3 Rail Voltage: "+str(_3v3), foreground = "green" if float(_3v3) > 3.3 else ("yellow" if float(_3v3) > 3.2 else "red"))
             batt5V.config(text="5V Rail Voltage: "+str(_5v), foreground = "green" if float(_5v) > 5 else ("yellow" if float(_5v) > 4.8 else "red"))
             battV.config(text="Battery Voltage: "+str(_7v4), foreground = "green" if float(_7v4) > 7.4 else ("yellow" if float(_7v4) > 7.2 else "red"))
             battTemp.config(text = "Battery Temp: "+str(temp),foreground = "green" if float(temp) < 30 else ("yellow" if float(temp) < 40 else "red"))
+            maxAlt.config(text="Maximum Altitude: "+str(max(data['altitude'])))
+            longLabel.config(text = "Longitude: " + str(lon))
+            latLabel.config(text = "Latitude: " + str(lat))
+            if lat != 0 and lon != 0:
+                dist.config(text = "Distance (m): " + str(haversine((data['lat'][0],data['lon'][0]),(lat/100,lon/100),unit=Unit.METERS)))
+            padTimeLabel.config(text = "Pad Time (min): " + str(round((float(t) - startTime)/60000,2)))
 
             if len(data['time']) > 700:
                 if len(plot0Str) > 1:
@@ -450,6 +498,7 @@ def _run():
                     else:
                         plot0(data['time'], data[plot0Str])
                 if len(plot1Str) > 1:
+                    #print(data['time'])
                     plot1(data['time'], data[plot1Str])
                 if len(plot2Str) > 1:
                     plot2(data['time'], data[plot2Str])
@@ -459,6 +508,16 @@ def _run():
     currentPlots[1] = plot1Str
     currentPlots[2] = plot2Str
 
+    newState = statusSelect.get()
+    if currentState != newState:
+        if newState == 'Idle':
+            teensy.write(0)
+        if newState == 'On Pad':
+            teensy.write(1)
+        if newState == 'Flight':
+            teensy.write(3)
+
+    currentState = newState
 
     root.after(1,_run)
 

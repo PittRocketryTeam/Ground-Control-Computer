@@ -49,9 +49,9 @@ void loop()
         }
         logData = "";
     }
-
+    
     //if(Serial2.available())//reads current state from the GUI, then executes some tasks accordingly
-    if(1)
+    if(Serial2.available())
     {
         //mode = Serial2.read();
         mode = 1;
